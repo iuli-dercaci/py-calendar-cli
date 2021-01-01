@@ -1,12 +1,13 @@
-from os import system, name
-from datetime import datetime, timedelta, date
 import calendar
 import time
+from datetime import datetime, timedelta, date
+from os import system, name
 import numpy as np
 from rich import box
-from rich.table import Table
 from rich.console import Console
-
+from rich.table import Table
+from keyboard_watcher import on_key_press, on_key_release
+from pynput.keyboard import Listener, Key
 
 def clear():
     system('cls' if name == 'nt' else 'clear')
@@ -122,3 +123,21 @@ if __name__ == '__main__':
 
     console = Console()
     console.print(table)
+
+
+    @on_key_press('left', 'right')
+    def on_press(key):
+        print(key)
+        pass
+
+
+    @on_key_release('esc')
+    def on_release(key):
+        return False
+
+
+    # Collect events until released
+    with Listener(
+            on_press=on_press,
+            on_release=on_release) as listener:
+        listener.join()
