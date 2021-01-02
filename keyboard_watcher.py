@@ -1,6 +1,6 @@
 def _get_key_value(key):
     if hasattr(key, 'char'):
-        return key.charsdwLU
+        return key.char
     elif hasattr(key, 'name'):
         return key.name
     else:

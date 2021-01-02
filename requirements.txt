@@ -1,2 +1,4 @@
-numpy~=1.19.2
-rich~=9.5.1
+numpy~=1.19.0
+rich~=9.5.0
+pynput~=1.7.0
+python-dateutil~=2.8.0
